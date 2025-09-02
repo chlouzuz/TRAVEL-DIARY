@@ -1,0 +1,23 @@
+@use "variables" as *
+@use "mixins" as *
+
+.btn
+  +btn-base
+
+.btn-sm
+  padding: 6px 10px
+  font-size: 12px
+
+.btn-primary
+  +btn-variant($primary, #fff, $primary-hover)
+
+.btn-outline
+  +btn-variant(#fff, $primary, rgba(25,118,210,.08), $primary)
+
+.btn-danger
+  +btn-variant($danger, #fff, $danger-hover)
+
+.btn svg
+  vertical-align: -2px
+  margin-right: 6px
+

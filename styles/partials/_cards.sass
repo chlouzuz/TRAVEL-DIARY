@@ -1,0 +1,78 @@
+@use "variables" as *
+@use "mixins" as *
+
+.cards
+  display: grid
+  grid-template-columns: 1fr
+  gap: 14px
+
++up($bp-sm)
+  .cards
+    grid-template-columns: repeat(2, 1fr)
+
++up($bp-md)
+  .cards
+    grid-template-columns: repeat(3, 1fr)
+
++up($bp-lg)
+  .cards
+    grid-template-columns: repeat(4, 1fr)
+
+.card
+  background: #fff
+  border: 1px solid $border
+  border-radius: 14px
+  box-shadow: $shadow
+  padding: 16px
+  transition: transform .12s ease, box-shadow .12s ease
+  display: flex
+  flex-direction: column
+  gap: 10px
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: $shadow-hover
+
+.card-head
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 10px
+
+.card-title
+  margin: 0
+  font-size: 18px
+  font-weight: 600
+  color: #1d2939
+
+.card-action
+  display: flex
+  justify-content: flex-end
+  gap: 8px
+
+.pills
+  display: flex
+  gap: 8px
+  flex-wrap: wrap
+  margin-top: 6px
+
+.pill
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  background: #eef2f7
+  color: #344054
+  padding: 6px 10px
+  border-radius: 999px
+  font-size: 13px
+
+.pill.city
+  background: #e9f3ff
+  color: #195fb3
+
+.card-note
+  margin-top: 6px
+  color: #344054
+  font-size: 14px
+
+
+

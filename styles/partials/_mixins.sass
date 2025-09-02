@@ -1,0 +1,38 @@
+@use "./variables" as *
+
+=up($w)
+  @media (min-width: $w)
+    @content
+
+=focus-ring
+  outline: 2px solid rgba(25,118,210,.35)
+  outline-offset: 2px
+
+=card
+  background: $panel-bg
+  border: 1px solid $border
+  border-radius: $radius
+  box-shadow: $shadow
+  padding: 16px
+  backdrop-filter: blur(2px)
+
+=btn-base
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  padding: 10px 14px
+  border: 1px solid transparent
+  border-radius: 10px
+  cursor: pointer
+  font-weight: 600
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease
+
+=btn-variant($bg, $color, $hover, $border-color: transparent)
+  background: $bg
+  color: $color
+  border-color: $border-color
+  &:hover
+    background: $hover
+  &:disabled
+    opacity: .6
+    cursor: not-allowed

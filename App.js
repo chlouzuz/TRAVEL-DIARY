@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TripForm from "./components/TripForm";
 import TripList from "./components/TripList";
 
-
 export default function App() {
     const [trips, setTrips] = useState([]);
     const [editing, setEditing] = useState(null);
@@ -22,24 +21,46 @@ export default function App() {
     }
 
     return (
-        <main className="container app">
-            <h1>Cestovatelský deník</h1>
+        <div className="app">
+            <header className="header">
+                <div className="container">
+                    <h1 className="logo">Cestovatelský deník</h1>
+                    <nav className="nav">
+                        <a href="#">Domů</a>
+                        <a href="#">O aplikaci</a>
+                    </nav>
+                </div>
+            </header>
+            
+            
+            <main className="main">
+                <div className="container">
+                    <div className="panel">
+                        <TripForm
+                            key={editing?.id || "create"}
+                            initialValues={editing || { title: "", city: "", date: "", note: "" }}
+                            isEditing={!!editing}
+                            onSubmit={(vals) =>
+                                editing ? handleUpdate(editing.id, vals) : handleCreate(vals)
+                            }
+                            onCancel={() => setEditing(null)}
+                        />
+                    </div>
 
-            <TripForm
-                key={editing?.id || "create"}
-                initialValues={editing || { title: "", city: "", date: "", note: "" }}
-                isEditing={!!editing}
-                onSubmit={(vals) =>
-                    editing ? handleUpdate(editing.id, vals) : handleCreate(vals)
-                }
-                onCancel={() => setEditing(null)}
-            />
+                    <section className="section">
+                        <h2 className="section-title">Moje výlety</h2>
+                        <TripList
+                            trips={trips}
+                            onEdit={(trip) => setEditing(trip)}
+                            onDelete={handleDelete}
+                        />
+                    </section>                  
+                </div>    
+            </main>
 
-            <TripList
-                trips={trips}
-                onEdit={(trip) => setEditing(trip)}
-                onDelete={handleDelete}
-            />
-        </main>
-    )
+            <footer className="footer">
+                <div className="container">© 2025 Cestovatelský deník</div>
+            </footer>
+        </div>
+    );
 }

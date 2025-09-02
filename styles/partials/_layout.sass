@@ -1,0 +1,59 @@
+@use "variables" as *
+@use "mixins" as *
+
+.app
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  font-family: Arial, sans-serif
+  color: #1a1a1a
+  background: url("../images/mapa-akvarel.jpg") no-repeat center/cover
+
+.container
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px
+
+.header
+  background: rgba(255,255,255,0.8)
+  border-bottom: 1px solid #ddd
+  backdrop-filter: blur(6px)
+
+  .container
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 15px 20px
+
+  .logo
+    font-size: 24px
+    font-weight: bold
+    color: #1a1a1a
+
+  .nav
+    display: flex
+    gap: 20px
+
+    a
+      color: #333
+      font-size: 16px
+      text-decoration: none
+      transition: color 0.2s
+
+      &:hover
+        color: #007bff
+
+.main
+  flex: 1
+  padding: 30px 0
+
+.footer
+  background: rgba(255,255,255,0.9)
+  border-top: 1px solid #ddd
+
+  .container
+    padding: 20px 
+    font-size: 14px
+    color: #667085
+
