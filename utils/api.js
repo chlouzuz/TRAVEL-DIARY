@@ -31,5 +31,5 @@ export async function deleteTrip(id) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error("DELETE trip failed");
-  return res.json();
+  return res.json().catch(() => ({}));
 }
