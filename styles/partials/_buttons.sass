@@ -1,23 +1,27 @@
 @use "variables" as *
-@use "mixins" as *
+@use "mixins" 
 
 .btn
-  +btn-base
+  +mixins.btn-base
 
 .btn-sm
   padding: 6px 10px
   font-size: 12px
 
 .btn-primary
-  +btn-variant($primary, #fff, $primary-hover)
+  +mixins.btn-variant($primary, #fff, $primary-hover, $primary)
 
 .btn-outline
-  +btn-variant(#fff, $primary, rgba(25,118,210,.08), $primary)
+  +mixins.btn-variant(#fff, $primary, rgba(25,118,210,.08), $primary)
 
 .btn-danger
-  +btn-variant($danger, #fff, $danger-hover)
+  +mixins.btn-variant($danger, #fff, $danger-hover, $danger)
 
 .btn svg
   vertical-align: -2px
   margin-right: 6px
+
+@media (min-width: #{ $bp-md })
+  .card-action .btn svg
+    margin-right: 0
 

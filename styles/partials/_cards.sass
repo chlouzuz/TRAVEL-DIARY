@@ -1,25 +1,27 @@
 @use "variables" as *
-@use "mixins" as *
+@use "mixins"
 
+// --- GRID ---
 .cards
   display: grid
   grid-template-columns: 1fr
   gap: 14px
 
-+up($bp-sm)
++mixins.up($bp-sm)
   .cards
     grid-template-columns: repeat(2, 1fr)
 
-+up($bp-md)
++mixins.up($bp-md)
   .cards
     grid-template-columns: repeat(3, 1fr)
 
-+up($bp-lg)
++mixins.up($bp-lg)
   .cards
     grid-template-columns: repeat(4, 1fr)
 
+// --- CARD ---
 .card
-  background: #fff
+  background: $color-bg
   border: 1px solid $border
   border-radius: 14px
   box-shadow: $shadow
@@ -28,32 +30,79 @@
   display: flex
   flex-direction: column
   gap: 10px
+  min-width: 0
+  max-width: 100%
+  overflow: hidden
+  word-break: break-word
+
   &:hover
     transform: translateY(-2px)
     box-shadow: $shadow-hover
 
+// --- HEAD ---
 .card-head
   display: flex
-  align-items: center
+  align-items: flex-start
   justify-content: space-between
   gap: 10px
+  min-width: 0
 
++mixins.up($bp-md)
+  .card-head
+    flex-direction: column
+    align-items: stretch
+
++mixins.up($bp-lg)
+  .card-head
+    flex-direction: row
+    align-items: center
+
+// --- TITLE ---
 .card-title
   margin: 0
   font-size: 18px
   font-weight: 600
   color: #1d2939
+  flex: 1 1 auto
+  min-width: 0
+  overflow: hidden
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: 2
+  white-space: normal
+  text-overflow: ellipsis
 
+// --- ACTION ---
 .card-action
   display: flex
   justify-content: flex-end
   gap: 8px
+  flex: 0 0 auto
 
++mixins.up($bp-md)
+  .card-action
+    align-self: flex-end
+    flex-direction: column
+    align-items: flex-end
+    gap: 6px
+    .btn
+      +mixins.btn-icon(36px)
+      +mixins.hide-label
+
++mixins.up($bp-lg) 
+  .card-action
+    align-self: auto
+    flex-direction: row
+    align-items: center
+    gap: 8px
+
+// --- PILLS ---
 .pills
   display: flex
   gap: 8px
   flex-wrap: wrap
   margin-top: 6px
+  min-width: 0
 
 .pill
   display: inline-flex
@@ -64,15 +113,24 @@
   padding: 6px 10px
   border-radius: 999px
   font-size: 13px
+  max-width: 100%
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
 .pill.city
   background: #e9f3ff
   color: #195fb3
 
+// --- NOTE ---
 .card-note
   margin-top: 6px
   color: #344054
   font-size: 14px
-
+  line-height: 1.4
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: 3
+  overflow: hidden
 
 

@@ -19,13 +19,13 @@
 =btn-base
   display: inline-flex
   align-items: center
-  gap: 6px
+  gap: 8px
   padding: 10px 14px
   border: 1px solid transparent
   border-radius: 10px
   cursor: pointer
   font-weight: 600
-  transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease
 
 =btn-variant($bg, $color, $hover, $border-color: transparent)
   background: $bg
@@ -36,3 +36,15 @@
   &:disabled
     opacity: .6
     cursor: not-allowed
+
+=btn-icon($size: 36px)
+  width: $size
+  height: $size
+  padding: 0
+  justify-content: center
+  gap: 0
+
+=hide-label
+  .label
+    display: none
+

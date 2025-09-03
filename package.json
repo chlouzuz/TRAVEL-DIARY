@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CodersLab: Final project",
   "scripts": {
-    "start": "parcel index.html --open --port 1236",
+    "start": "parcel index.html --open --port 1237",
     "build": "parcel build index.html",
     "clean": "rimraf .parcel-cache dist",
     "test": "echo \"Error: no test specified\" && exit 1"

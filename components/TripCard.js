@@ -9,13 +9,23 @@ export default function TripCard({ trip, onDelete, onEdit }) {
             <div className="card-head">
                 <h3 className="card-title">{trip.title}</h3>
                 <div className="card-action">
-                    <button className="btn btn-outline btn-sm" onClick={() => onEdit(trip)}>
-                        <FaEdit />Editovat
+                    <button 
+                        className="btn btn-outline btn-sm"
+                        title="Editovat" 
+                        onClick={() => onEdit(trip)}
+                    >
+                        <FaEdit aria-hidden="true" />
+                        <span className="label">Editovat</span>
                     </button>
                         
                     
-                    <button className="btn btn-danger btn-sm" onClick={() => onDelete(trip.id)}>
-                        <FaTrash />Smazat
+                    <button 
+                        className="btn btn-danger btn-sm" 
+                        title="Smazat"
+                        onClick={() => onDelete(trip.id)}
+                    >
+                        <FaTrash aria-hidden="true" />
+                        <span className="label">Smazat</span>
                     </button>
                         
                     
