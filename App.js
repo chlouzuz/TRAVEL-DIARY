@@ -19,8 +19,7 @@ export default function App() {
                 data.sort((a, b) => (a.date < b.date ? 1 : -1));
                 setTrips(data);
                 setError("");
-            } catch (e) {
-                console.error(e);
+            } catch {
                 setError("Nepodařio se načíst výlety.");
             } finally {
                 setLoading(false);
@@ -36,8 +35,7 @@ export default function App() {
             const created = await createTrip(data);
             setTrips([created, ...trips]);
             setError("");
-        } catch (e) {
-            console.error(e);
+        } catch {
             setError("Nepodařilo se vytvořit výlet.");
         };
     }
@@ -48,20 +46,19 @@ export default function App() {
             setTrips(trips.map((t) => (t.id === id ? updated : t)));
             setEditing(null);
             setError("");
-        } catch (e) {
-            console.error(e);
+        } catch {
             setError("Nepodařilo se uložit změny.");
         }
     }
 
     async function handleDelete(id) {
+        if (!window.confirm("Opravdu chcete smazat tento výlet?")) return;
         const prev = trips;
         setTrips(trips.filter((t) => t.id !== id));
         try {
             await deleteTrip(id);
             setError("");
-        } catch (e) {
-            console.error(e);
+        } catch {
             setError("Smazání se nepovedlo, obnovuji seznam.");
             setTrips(prev);
         }

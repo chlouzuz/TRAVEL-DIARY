@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { normalizeDate } from "../utils/date";
 
 export default function TripForm({ initialValues, onSubmit, onCancel, isEditing }) {
   const [form, setForm] = useState(initialValues);
@@ -12,7 +13,7 @@ export default function TripForm({ initialValues, onSubmit, onCancel, isEditing 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!form.title.trim() || !form.city.trim() || !form.date) {
+    if (!form.title.trim() || !form.city.trim() || !normalizeDate(form.date)) {
       setMsg("Vyplň Název, Město a Datum.");
       return;
     }
@@ -20,7 +21,7 @@ export default function TripForm({ initialValues, onSubmit, onCancel, isEditing 
     onSubmit({
       title: form.title.trim(),
       city: form.city.trim(),
-      date: form.date,
+      date: normalizeDate(form.date),
       note: form.note?.trim() || "",
     });
 
@@ -64,7 +65,7 @@ export default function TripForm({ initialValues, onSubmit, onCancel, isEditing 
             className="input"
             type="date"
             name="date"
-            value={form.date}
+            value={normalizeDate(form.date)}
             onChange={handleChange}
             required
           />

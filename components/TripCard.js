@@ -1,9 +1,8 @@
 import React from "react";
 import { FaEdit, FaTrash, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { formatDateCZ } from "../utils/date";
 
 export default function TripCard({ trip, onDelete, onEdit }) {
-
-
     return (
         <article className="card">
             <div className="card-head">
@@ -34,7 +33,7 @@ export default function TripCard({ trip, onDelete, onEdit }) {
 
             <div className="pills">
                 <span className="pill city"><FaMapMarkerAlt /> {trip.city}</span>
-                <span className="pill"><FaCalendarAlt /> {trip.date}</span>
+                <span className="pill"><FaCalendarAlt /> {formatDateCZ(trip.date)}</span>
             </div>
 
             {trip.note && <p className="card-note">{trip.note}</p>}
