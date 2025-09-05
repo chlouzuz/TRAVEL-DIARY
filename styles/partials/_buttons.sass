@@ -1,5 +1,5 @@
 @use "variables" as *
-@use "mixins" 
+@use "mixins"
 
 .btn
   +mixins.btn-base
@@ -19,9 +19,6 @@
 
 .btn svg
   vertical-align: -2px
-  margin-right: 6px
+  margin-right: 0
 
-@media (min-width: #{ $bp-md })
-  .card-action .btn svg
-    margin-right: 0
 

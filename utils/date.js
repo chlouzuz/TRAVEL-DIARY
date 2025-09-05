@@ -11,6 +11,6 @@ export function formatDateCZ(dateStr) {
 }
 
 export function normalizeDate(dateStr) {
-  if (!dateStr) return "";
-  return dateStr.split("T")[0];
+    if (!dateStr) return "";
+    return dateStr.split("T")[0];
 }
