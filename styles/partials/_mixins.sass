@@ -4,6 +4,10 @@
   @media (min-width: $w)
     @content
 
+=down($w)
+  @media (max-width: $w)
+    @content
+
 =focus-ring
   outline: 2px solid rgba(25,118,210,.35)
   outline-offset: 2px
